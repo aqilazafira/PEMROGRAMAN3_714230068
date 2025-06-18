@@ -23,7 +23,7 @@ export function RegisterPage() {
         try {
             await register(form.username, form.password);
             Swal.fire("Berhasil", "Registrasi berhasil!", "success");
-            navigate("/login"); // redirect ke halaman utama
+            navigate("/"); // redirect ke halaman utama
         } catch (err) {
             Swal.fire("Gagal", "Terjadi kesalahan saat registrasi", "error");
         }
