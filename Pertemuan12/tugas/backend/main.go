@@ -32,9 +32,9 @@ func init() {
 // @contact.url https://github.com/indrariksa
 // @contact.email indra@ulbi.ac.id
 
-// @host localhost:8088
 // @BasePath /
-// @schemes http
+// @schemes http https
+
 // @securityDefinitions.apikey BearerAuth
 // @in header
 // @name Authorization
