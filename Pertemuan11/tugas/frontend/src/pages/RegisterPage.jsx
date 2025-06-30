@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export function RegisterPage() {
-    const [form, setForm] = useState({ username: "", password: "" });
+    const [form, setForm] = useState({ username: "", password: "", role: "" });
     const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) navigate("/dashboard");
-    }, []);
+    }, [navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,11 +21,11 @@ export function RegisterPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await register(form.username, form.password);
-            Swal.fire("Berhasil", "Registrasi berhasil!", "success");
-            navigate("/"); // redirect ke halaman utama
+            await register(form.username, form.password, form.role);
+            Swal.fire("Berhasil", "Registrasi berhasil! Silakan login.", "success");
+            navigate("/");
         } catch (err) {
-            Swal.fire("Gagal", "Terjadi kesalahan saat registrasi", "error");
+            Swal.fire("Gagal", "Registrasi gagal. Username mungkin sudah digunakan.", "error");
         }
     };
 
@@ -43,6 +43,7 @@ export function RegisterPage() {
                     value={form.username}
                     onChange={handleChange}
                     className="w-full p-2 mb-4 border rounded"
+                    required
                 />
                 <input
                     type="password"
@@ -51,16 +52,31 @@ export function RegisterPage() {
                     value={form.password}
                     onChange={handleChange}
                     className="w-full p-2 mb-6 border rounded"
+                    required
                 />
-                <input
-                    type="text"
+                <select
                     name="role"
-                    placeholder="Role"
-                    value={form.role}
+                    value={form.role || ""}
                     onChange={handleChange}
                     className="w-full p-2 mb-6 border rounded"
-                />
-
+                    required
+                >
+                    <option value="" disabled>
+                        Pilih Role
+                    </option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <div className="mb-4 text-center">
+                    <span>Sudah punya akun? </span>
+                    <button
+                        type="button"
+                        className="text-blue-500 hover:underline"
+                        onClick={() => navigate("/")}
+                    >
+                        Login
+                    </button>
+                </div>
                 <button
                     type="submit"
                     className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"

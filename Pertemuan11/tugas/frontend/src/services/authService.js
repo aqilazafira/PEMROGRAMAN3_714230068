@@ -5,7 +5,7 @@ const API_URL_REGISTER = "https://backendpraktikum-production-0a18.up.railway.ap
 
 
 export const login = async (username, password) => {
-  const response = await axios.post(API_URL, { username, password });
+  const response = await axios.post(API_URL_LOGIN, { username, password });
   return response.data;
 };
 export const register = async (username, password, role) => {

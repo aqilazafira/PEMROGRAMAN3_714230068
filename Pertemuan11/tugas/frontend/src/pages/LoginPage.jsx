@@ -53,24 +53,22 @@ export function LoginPage() {
                     onChange={handleChange}
                     className="w-full p-2 mb-6 border rounded"
                 />
+                <div className="mb-4 text-center">
+                    <span>Belum punya akun? </span>
+                    <button
+                        type="button"
+                        className="text-blue-500 hover:underline"
+                        onClick={() => navigate("/register")}
+                    >
+                        Register
+                    </button>
+                </div>
                 <button
                     type="submit"
                     className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
                 >
                     Login
                 </button>
-                {/* Link to Register */}
-        <div className="mt-6 text-center">
-          <p className="text-gray-600 text-sm">
-            Belum punya akun?{" "}
-            <Link
-              to="/register"
-              className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
-            >
-              Daftar disini
-            </Link>
-          </p>
-        </div>
             </form>
         </div>
     );

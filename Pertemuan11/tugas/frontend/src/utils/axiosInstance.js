@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Buat instance axios
 const axiosInstance = axios.create({
-  baseURL: "https://backendpraktikum-production-0a18.up.railway.app",
+  baseURL: "https://backendpraktikum-production-0a18.up.railway.app/api",
 });
 
 // Interceptor REQUEST – tambah token secara otomatis
