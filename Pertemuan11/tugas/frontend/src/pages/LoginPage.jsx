@@ -59,6 +59,18 @@ export function LoginPage() {
                 >
                     Login
                 </button>
+                {/* Link to Register */}
+        <div className="mt-6 text-center">
+          <p className="text-gray-600 text-sm">
+            Belum punya akun?{" "}
+            <Link
+              to="/register"
+              className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
+            >
+              Daftar disini
+            </Link>
+          </p>
+        </div>
             </form>
         </div>
     );
